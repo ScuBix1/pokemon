@@ -27,7 +27,7 @@ onMounted(async () => {
       <div class="flex flex-col md:flex-row items-center justify-center gap-x-6">
         <div class="flex flex-col items-center gap-y-3">
           <Picture :pathImage="pokemon.image" :name="pokemon.name" />
-          <div class="flex gap-x-3">
+          <div class="flex gap-x-3 mb-6">
             <Type v-for="type in pokemon.apiTypes" :type="type.name" />
           </div>
         </div>
