@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from '../components/HelloWorld.vue'
+import Pokemon from '../components/Pokemon.vue'
 </script>
 
 <template>
   <main>
-    <HelloWorld msg="message" />
+    <Pokemon class="className" />
   </main>
 </template>
