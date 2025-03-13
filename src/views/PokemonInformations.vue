@@ -2,6 +2,7 @@
 import InfoCard from '@/components/InfoCard/InfoCard.vue'
 import Picture from '@/components/Pokemon/Picture/Picture.vue'
 import Type from '@/components/Pokemon/Type/Type.vue'
+import Resistances from '@/components/Resistances/Resistances.vue'
 import type { Pokemon } from '@/constant'
 import { onMounted, ref, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -42,6 +43,9 @@ onMounted(async () => {
           title="Statistiques"
           className="py-3"
         />
+      </div>
+      <div>
+        <Resistances :resistances="pokemon.apiResistances" />
       </div>
     </div>
   </main>

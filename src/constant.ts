@@ -22,4 +22,9 @@ export interface Pokemon {
     name: string
     pokedexId: number
   }[]
+  apiResistances: {
+    name: string
+    damage_multiplier: number
+    damage_relation: string
+  }[]
 }
