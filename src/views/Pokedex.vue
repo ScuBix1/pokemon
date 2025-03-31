@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { defineProps, onMounted, ref } from 'vue'
+import { defineProps, onMounted, ref, watchEffect } from 'vue'
 import { usePokedex } from '../context/usePokedex.ts'
 import Pokemon from '../components/Pokemon/Pokemon.vue'
 
 const { pokedex } = usePokedex()
 const pokemons = ref([])
+
+watchEffect(async () => {
+  const promises = pokedex.value.map(async (id) => {
+    const res = await fetch(`https://pokebuildapi.fr/api/v1/pokemon/${id}`)
+    return await res.json()
+  })
+
+  pokemons.value = await Promise.all(promises)
+})
 
 onMounted(async () => {
   const promises = pokedex.value.map(async (id) => {
