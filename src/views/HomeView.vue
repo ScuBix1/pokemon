@@ -6,6 +6,7 @@ import Pokemon from '../components/Pokemon/Pokemon.vue'
 
 const pokemons: Ref<PokemonType[]> = ref([])
 const selectedType = ref<string>('')
+const search = ref('')
 
 onMounted(async () => {
   try {
@@ -17,21 +18,34 @@ onMounted(async () => {
 })
 
 const filteredPokemons = computed(() => {
-  if (!selectedType.value) return pokemons.value
-  return pokemons.value.filter((pokemon) =>
-    pokemon.apiTypes.some((type) => type.name === selectedType.value),
-  )
+  return pokemons.value.filter((pokemon) => {
+    const matchType =
+      !selectedType.value || pokemon.apiTypes.some((type) => type.name === selectedType.value)
+
+    const matchName =
+      !search.value || pokemon.name.toLowerCase().startsWith(search.value.toLowerCase())
+
+    return matchType && matchName
+  })
 })
 </script>
 
 <template>
-  <main class="bg-gray-800">
+  <main class="bg-gray-800 min-h-screen p-4 text-white">
     <FilterType v-model:selectedType="selectedType" />
+    <div class="flex justify-center">
+      <input
+        v-model="search"
+        placeholder="Rechercher un Pokémon"
+        class="text-black my-6 w-2/3 p-2 rounded border border-gray-300 text-white"
+      />
+    </div>
     <div class="flex flex-col gap-6 items-center justify-center md:flex-row md:flex-wrap">
       <Pokemon
         v-for="pokemon in filteredPokemons"
         :key="pokemon.id"
-        :name="pokemon.slug"
+        :id="pokemon.id"
+        :name="pokemon.name"
         :pathImage="pokemon.image"
         :types="pokemon.apiTypes"
       />

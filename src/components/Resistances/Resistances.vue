@@ -28,7 +28,7 @@ const swiperOptions = ref({
   modules: [Navigation, Pagination],
   slidesPerView: 3,
   spaceBetween: 20,
-  pagination: { el: '.custom-pagination', clickable: true },
+  pagination: { clickable: true },
   navigation: {
     nextEl: null as HTMLElement | null,
     prevEl: null as HTMLElement | null,
@@ -45,7 +45,10 @@ onMounted(() => {
   <div class="bg-gray-500 overflow-hidden p-6 my-9">
     <h2 class="text-2xl font-bold text-center my-6">Résistances</h2>
     <div class="relative pt-[50px]">
-      <swiper v-bind="swiperOptions" class="w-full max-w-lg">
+      <swiper
+        v-bind="swiperOptions"
+        class="w-full max-w-lg [&>.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal]:bottom-0"
+      >
         <swiper-slide v-for="resistance in resistances" :key="`resistance-${resistance.name}`">
           <div
             class="flex flex-col items-center justify-center p-4 rounded-lg shadow-md text-white"
@@ -72,9 +75,6 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div
-        class="custom-pagination !absolute !left-1/2 !translate-x-[-50%] [&>span]:mx-[1px]"
-      ></div>
     </div>
   </div>
 </template>
