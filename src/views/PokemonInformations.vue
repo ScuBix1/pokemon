@@ -23,7 +23,7 @@ onMounted(async () => {
 
 <template>
   <main>
-    <h1 class="uppercase text-white text-center text-4xl m-6">Informations</h1>
+    <h1 class="uppercase text-white text-center text-4xl m-6 font-bold">Informations</h1>
     <div v-if="pokemon">
       <div class="flex flex-col md:flex-row items-center justify-center gap-x-6">
         <div class="flex flex-col items-center gap-y-3">
