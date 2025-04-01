@@ -32,12 +32,14 @@ const filteredPokemons = computed(() => {
 
 <template>
   <main class="bg-gray-800 min-h-screen p-4 text-white">
+    <h1 class="uppercase text-3xl font-bold mb-6 text-center">Liste des pokémon</h1>
     <FilterType v-model:selectedType="selectedType" />
     <div class="flex justify-center">
       <input
         v-model="search"
         placeholder="Rechercher un Pokémon"
         class="text-black my-6 w-2/3 p-2 rounded border border-gray-300 text-white"
+        aria-label="Barre de recherche d'un pokémon par son nom"
       />
     </div>
     <div class="flex flex-col gap-6 items-center justify-center md:flex-row md:flex-wrap">

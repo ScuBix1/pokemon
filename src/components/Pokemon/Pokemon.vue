@@ -43,6 +43,7 @@ function toggleCapture() {
       @click="toggleCapture"
       class="z-[100000] mt-4 px-4 py-1 rounded-full w-[100px] mx-auto"
       :class="{ 'bg-green-600': !isCapturedPokemon, 'bg-red-600': isCapturedPokemon }"
+      :aria-label="isCapturedPokemon ? 'Relâcher un pokémon' : 'Capturer un pokémon'"
     >
       {{ isCapturedPokemon ? 'Relâcher' : 'Capturer' }}
     </button>
