@@ -5,7 +5,7 @@ import { usePokedex } from '../../context/usePokedex.ts'
 import { computed } from 'vue'
 
 const props = defineProps<{
-  id?: number
+  id: number
   className?: string
   pathImage?: string
   name?: string
