@@ -26,9 +26,10 @@ onMounted(async () => {
       v-model="selectedType"
       @change="emit('update:selectedType', selectedType)"
       class="bg-gray-700 text-white px-4 py-2 rounded-md outline-none"
+      aria-label="Filtrer les Pokémon par type"
     >
-      <option value="">Tous les types</option>
-      <option v-for="type in types" :key="type" :value="type">
+      <option value="" aria-label="Tous les types de pokémon">Tous les types</option>
+      <option v-for="type in types" :key="type" :value="type" :aria-label="`Type ${type}`">
         {{ type }}
       </option>
     </select>

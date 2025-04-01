@@ -42,10 +42,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-gray-500 overflow-hidden p-6">
+  <div class="bg-gray-500 overflow-hidden p-6 my-9">
     <h2 class="text-2xl font-bold text-center my-6">Résistances</h2>
     <div class="relative pt-[50px]">
-      <swiper v-bind="swiperOptions" class="w-full max-w-lg">
+      <swiper
+        v-bind="swiperOptions"
+        class="w-full max-w-lg [&>.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal]:bottom-0"
+      >
         <swiper-slide v-for="resistance in resistances" :key="`resistance-${resistance.name}`">
           <div
             class="flex flex-col items-center justify-center p-4 rounded-lg shadow-md text-white"
@@ -56,17 +59,17 @@ onMounted(() => {
           </div>
         </swiper-slide>
       </swiper>
-      <div class="absolute top-0 right-1 transform -translate-y-1/2">
-        <div class="relative w-[100px]">
+      <div class="absolute top-0 right-0 transform">
+        <div class="relative w-[95vw]">
           <div
             ref="prevButton"
-            class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-3 rounded-full w-[35px] h-[35px] flex items-center justify-center"
+            class="absolute left-3 top-2/3 transform z-10 bg-gray-800 text-white p-3 rounded-full w-[35px] h-[35px] flex items-center justify-center"
           >
             <i class="fa-solid fa-arrow-left"></i>
           </div>
           <div
             ref="nextButton"
-            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full w-[35px] h-[35px] flex items-center justify-center"
+            class="absolute right-0 top-2/3 transform bg-gray-800 text-white p-3 rounded-full w-[35px] h-[35px] flex items-center justify-center"
           >
             <i class="fa-solid fa-arrow-right"></i>
           </div>
